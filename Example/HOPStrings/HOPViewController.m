@@ -49,7 +49,7 @@
 - (void)segmentDidChange:(UISegmentedControl *)control {
     NSInteger index = [control selectedSegmentIndex];
 
-    HOPAttributer *attributer;
+    __block HOPAttributer *attributer;
     if (index == 0) {
         attributer =
             [[[[[[HOPAttributer
@@ -76,7 +76,18 @@
                         attr.kern = @5;
                     }];
     } else if (index == 1) {
+        NSArray *strings = @[ @"Here is how to concat a bunch of strings with newlines:",
+                              @"You can use the `appendNewline` method.",
+                              @"It will take care of the initial case for you." ];
+        attributer =
+            [HOPAttributer attributerWithDefaultAttributesBlock:^(HOPStringAttributes *attr) {
+                attr.font = [UIFont systemFontOfSize:18];
+                attr.foregroundColor = [UIColor colorWithWhite:0.4 alpha:1];
+            }];
 
+        [strings enumerateObjectsUsingBlock:^(NSString *str, NSUInteger idx, BOOL *stop) {
+            attributer = [[attributer appendNewline] appendString:str];
+        }];
     } else if (index == 2) {
 
     } else if (index == 3) {
