@@ -3,7 +3,7 @@
 //
 //
 
-#import "HOPString.h"
+#import "HOPAttributer.h"
 
 #import "HOPStringAttributes.h"
 
@@ -11,13 +11,13 @@
 
 #pragma mark -
 
-@interface HOPString ()
+@interface HOPAttributer ()
 
 @property (nonatomic, readonly) HOPStringAttributes *cascadingAttributes;
 
 @end
 
-@implementation HOPString
+@implementation HOPAttributer
 
 - (instancetype)init {
     NSAttributedString *attributedString = [[NSAttributedString alloc] init];
@@ -43,11 +43,11 @@
     return [[self alloc] initWithAttributedString:attributedString cascadingAttributes:attributes];
 }
 
-+ (instancetype)withCascadingAttributesBlock:(void(^)(HOPStringAttributes *attr))attributesBlock {
++ (instancetype)withCascadingAttributesBlock:(void(^)(HOPStringAttributes *))attributesBlock {
     NSParameterAssert(attributesBlock != nil);
-    HOPString *string = [[self alloc] init];
-    attributesBlock(string.cascadingAttributes);
-    return string;
+    HOPAttributer *attributer = [[self alloc] init];
+    attributesBlock(attributer.cascadingAttributes);
+    return attributer;
 }
 
 + (instancetype)string:(NSString *)string {
@@ -57,19 +57,19 @@
     return [[self alloc] initWithAttributedString:attributedString cascadingAttributes:attributes];
 }
 
-+ (instancetype)string:(NSString *)string withCascadingAttributesBlock:(void(^)(HOPStringAttributes *attr))attributesBlock {
++ (instancetype)string:(NSString *)string withCascadingAttributesBlock:(void(^)(HOPStringAttributes *))attributesBlock {
     NSParameterAssert(string != nil);
     NSParameterAssert(attributesBlock != nil);
     HOPStringAttributes *attributes = [[HOPStringAttributes alloc] init];
     attributesBlock(attributes);
     NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:string attributes:[attributes attributedDictionary]];
-    HOPString *str = [[self alloc] initWithAttributedString:attributedString cascadingAttributes:attributes];
-    return str;
+    HOPAttributer *attributer = [[self alloc] initWithAttributedString:attributedString cascadingAttributes:attributes];
+    return attributer;
 }
 
 # pragma mark - Appending
 
-- (instancetype)appendString:(NSString *)string withAttributesBlock:(void(^)(HOPStringAttributes *attr))attributesBlock {
+- (instancetype)appendString:(NSString *)string withAttributesBlock:(void(^)(HOPStringAttributes *))attributesBlock {
     NSParameterAssert(string != nil);
     NSParameterAssert(attributesBlock != nil);
     HOPStringAttributes *attributes = [[HOPStringAttributes alloc] init];
@@ -88,7 +88,7 @@
     return [[[self class] alloc] initWithAttributedString:combinedString cascadingAttributes:self.cascadingAttributes];
 }
 
-- (instancetype)cascadeAppendString:(NSString *)string attributesBlock:(void (^)(HOPStringAttributes *attr))attributesBlock {
+- (instancetype)cascadeAppendString:(NSString *)string attributesBlock:(void (^)(HOPStringAttributes *))attributesBlock {
     NSParameterAssert(string != nil);
     NSParameterAssert(attributesBlock != nil);
     HOPStringAttributes *modifiedAttributes = [self.cascadingAttributes copy];

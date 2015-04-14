@@ -49,10 +49,10 @@
 - (void)segmentDidChange:(UISegmentedControl *)control {
     NSInteger index = [control selectedSegmentIndex];
 
-    HOPString *string;
+    HOPAttributer *attributer;
     if (index == 0) {
-        string =
-            [[[[[HOPString
+        attributer =
+            [[[[[HOPAttributer
                 string:@"Start with some base attributes\n"
                     withCascadingAttributesBlock:^(HOPStringAttributes *attr) {
                         attr.font = [UIFont fontWithName:@"avenir" size:18];
@@ -80,7 +80,7 @@
     } else if (index == 4) {
 
     }
-    self.label.attributedText = [string attributedString];
+    self.label.attributedText = [attributer attributedString];
 }
 
 @end

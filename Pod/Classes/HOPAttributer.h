@@ -9,7 +9,7 @@
 
 #pragma mark -
 
-@interface HOPString : NSObject
+@interface HOPAttributer : NSObject
 
 # pragma mark - Output
 
