@@ -55,21 +55,21 @@
 
 # pragma mark - NSParagraphStyle Attributes
 
-@property(nonatomic, assign) CGFloat lineSpacing;
-@property(nonatomic, assign) CGFloat paragraphSpacing;
-@property(nonatomic, assign) NSTextAlignment alignment;
-@property(nonatomic, assign) CGFloat firstLineHeadIndent;
-@property(nonatomic, assign) CGFloat headIndent;
-@property(nonatomic, assign) CGFloat tailIndent;
-@property(nonatomic, assign) NSLineBreakMode lineBreakMode;
-@property(nonatomic, assign) CGFloat minimumLineHeight;
-@property(nonatomic, assign) CGFloat maximumLineHeight;
-@property(nonatomic, assign) NSWritingDirection baseWritingDirection;
-@property(nonatomic, assign) CGFloat lineHeightMultiple;
-@property(nonatomic, assign) CGFloat paragraphSpacingBefore;
-@property(nonatomic, assign) float hyphenationFactor;
+@property(nonatomic, strong) NSNumber *lineSpacing; // CGFloat
+@property(nonatomic, strong) NSNumber *paragraphSpacing; // CGFloat
+@property(nonatomic, strong) NSNumber *alignment; // NSTextAlignment
+@property(nonatomic, strong) NSNumber *firstLineHeadIndent; // CGFloat
+@property(nonatomic, strong) NSNumber *headIndent; // CGFloat
+@property(nonatomic, strong) NSNumber *tailIndent; // CGFloat
+@property(nonatomic, strong) NSNumber *lineBreakMode; // NSLineBreakMode
+@property(nonatomic, strong) NSNumber *minimumLineHeight; // CGFloat
+@property(nonatomic, strong) NSNumber *maximumLineHeight; // CGFloat
+@property(nonatomic, strong) NSNumber *baseWritingDirection; // NSWritingDirection
+@property(nonatomic, strong) NSNumber *lineHeightMultiple; // CGFloat
+@property(nonatomic, strong) NSNumber *paragraphSpacingBefore; // CGFloat
+@property(nonatomic, strong) NSNumber *hyphenationFactor; // float
 @property(nonatomic, copy) NSArray *tabStops;
-@property(nonatomic, assign) CGFloat defaultTabInterval;
+@property(nonatomic, strong) NSNumber *defaultTabInterval; // CGFloat
 
 # pragma mark - Output
 
