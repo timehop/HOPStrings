@@ -67,19 +67,7 @@
     return attributer;
 }
 
-# pragma mark - Appending
-
-- (instancetype)appendString:(NSString *)string emptyAttributesBlock:(void(^)(HOPStringAttributes *))attributesBlock {
-    NSParameterAssert(string != nil);
-    NSParameterAssert(attributesBlock != nil);
-    HOPStringAttributes *attributes = [[HOPStringAttributes alloc] init];
-    attributesBlock(attributes);
-    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:string attributes:[attributes attributedDictionary]];
-    NSAttributedString *combinedString = [self.attributedString hop_stringByAppendingAttributedString:attributedString];
-    return [[[self class] alloc] initWithAttributedString:combinedString defaultAttributes:self.defaultAttributes];
-}
-
-# pragma mark - Cascading
+# pragma mark - Appending starting with default attributes
 
 - (instancetype)appendString:(NSString *)string {
     NSParameterAssert(string != nil);
@@ -94,6 +82,18 @@
     HOPStringAttributes *modifiedAttributes = [self.defaultAttributes copy];
     attributesBlock(modifiedAttributes);
     NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:string attributes:[modifiedAttributes attributedDictionary]];
+    NSAttributedString *combinedString = [self.attributedString hop_stringByAppendingAttributedString:attributedString];
+    return [[[self class] alloc] initWithAttributedString:combinedString defaultAttributes:self.defaultAttributes];
+}
+
+# pragma mark - Appending without using default attributes
+
+- (instancetype)appendString:(NSString *)string emptyAttributesBlock:(void(^)(HOPStringAttributes *))attributesBlock {
+    NSParameterAssert(string != nil);
+    NSParameterAssert(attributesBlock != nil);
+    HOPStringAttributes *attributes = [[HOPStringAttributes alloc] init];
+    attributesBlock(attributes);
+    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:string attributes:[attributes attributedDictionary]];
     NSAttributedString *combinedString = [self.attributedString hop_stringByAppendingAttributedString:attributedString];
     return [[[self class] alloc] initWithAttributedString:combinedString defaultAttributes:self.defaultAttributes];
 }

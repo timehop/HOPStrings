@@ -7,6 +7,8 @@
 
 #pragma mark -
 
+/// Property storage and arbitration between NSAttributedString dictionary attribute keys
+/// and NSParagraphStyle attributes.
 @interface HOPStringAttributes : NSObject <NSCopying>
 
 # pragma mark - NSAttributedString Attributes
@@ -73,7 +75,7 @@
 
 # pragma mark - Output
 
-/// Creates a NSDictionary to be used as a NSAttributedString's attributes
+/// Creates an NSDictionary to be used as a NSAttributedString's attributes
 - (NSDictionary *)attributedDictionary;
 
 @end
