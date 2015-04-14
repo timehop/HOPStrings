@@ -52,24 +52,28 @@
     HOPAttributer *attributer;
     if (index == 0) {
         attributer =
-            [[[[[HOPAttributer
-                string:@"Start with some base attributes\n"
-                    withCascadingAttributesBlock:^(HOPStringAttributes *attr) {
-                        attr.font = [UIFont fontWithName:@"avenir" size:18];
+            [[[[[[HOPAttributer
+                attributerWithString:@"Start with some default attributes\n"
+                    defaultAttributesBlock:^(HOPStringAttributes *attr) {
+                        attr.font = [UIFont fontWithName:@"AmericanTypewriter" size:18];
                         attr.foregroundColor = [UIColor colorWithWhite:0.2 alpha:1];
                     }]
-                cascadeAppendString:@"Add some more with the same attributes\n"]
-                cascadeAppendString:@"Same thing but this time add some flair\n"
+                appendString:@"Add some more with the same attributes\n"]
+                appendString:@"Same thing but this time add some flair\n"
                     attributesBlock:^(HOPStringAttributes *attr) {
                         attr.underlineStyle = @(NSUnderlineStyleThick|NSUnderlinePatternDashDot);
                         attr.underlineColor = [UIColor blueColor];
                         attr.strokeWidth = @3;
                     }]
-                cascadeAppendString:@"Cascade only uses the initial attributes\n"]
-                cascadeAppendString:@"You can also override the cascade.\n"
+                appendString:@"appendString only uses the initial attributes\n"]
+                appendString:@"You can also override the default attributes.\n"
                     attributesBlock:^(HOPStringAttributes *attr) {
                         attr.foregroundColor = [UIColor colorWithWhite:0.8 alpha:1];
                         attr.backgroundColor = [UIColor colorWithWhite:0.2 alpha:1];
+                    }]
+                appendString:@"Or add a string without any of the defaults."
+                    emptyAttributesBlock:^(HOPStringAttributes *attr) {
+                        attr.kern = @5;
                     }];
     } else if (index == 1) {
 

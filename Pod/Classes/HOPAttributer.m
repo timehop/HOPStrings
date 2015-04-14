@@ -13,7 +13,7 @@
 
 @interface HOPAttributer ()
 
-@property (nonatomic, readonly) HOPStringAttributes *cascadingAttributes;
+@property (nonatomic, readonly) HOPStringAttributes *defaultAttributes;
 
 @end
 
@@ -22,15 +22,15 @@
 - (instancetype)init {
     NSAttributedString *attributedString = [[NSAttributedString alloc] init];
     HOPStringAttributes *attributes = [[HOPStringAttributes alloc] init];
-    return [self initWithAttributedString:attributedString cascadingAttributes:attributes];
+    return [self initWithAttributedString:attributedString defaultAttributes:attributes];
 }
 
-- (instancetype)initWithAttributedString:(NSAttributedString *)attributedString cascadingAttributes:(HOPStringAttributes *)attributes {
+- (instancetype)initWithAttributedString:(NSAttributedString *)attributedString defaultAttributes:(HOPStringAttributes *)attributes {
     NSParameterAssert(attributedString != nil);
     NSParameterAssert(attributes != nil);
     self = [super init];
     if (self != nil) {
-        _cascadingAttributes = [attributes copy];
+        _defaultAttributes = [attributes copy];
         _attributedString = [attributedString copy];
     }
     return self;
@@ -38,64 +38,64 @@
 
 # pragma mark - Lifting
 
-+ (instancetype)withCascadingAttributes:(HOPStringAttributes *)attributes {
++ (instancetype)attributerWithDefaultAttributes:(HOPStringAttributes *)attributes {
     NSAttributedString *attributedString = [[NSAttributedString alloc] init];
-    return [[self alloc] initWithAttributedString:attributedString cascadingAttributes:attributes];
+    return [[self alloc] initWithAttributedString:attributedString defaultAttributes:attributes];
 }
 
-+ (instancetype)withCascadingAttributesBlock:(void(^)(HOPStringAttributes *))attributesBlock {
++ (instancetype)attributerWithDefaultAttributesBlock:(void(^)(HOPStringAttributes *))attributesBlock {
     NSParameterAssert(attributesBlock != nil);
     HOPAttributer *attributer = [[self alloc] init];
-    attributesBlock(attributer.cascadingAttributes);
+    attributesBlock(attributer.defaultAttributes);
     return attributer;
 }
 
-+ (instancetype)string:(NSString *)string {
++ (instancetype)attributerWithString:(NSString *)string {
     NSParameterAssert(string != nil);
     NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:string];
     HOPStringAttributes *attributes = [[HOPStringAttributes alloc] init];
-    return [[self alloc] initWithAttributedString:attributedString cascadingAttributes:attributes];
+    return [[self alloc] initWithAttributedString:attributedString defaultAttributes:attributes];
 }
 
-+ (instancetype)string:(NSString *)string withCascadingAttributesBlock:(void(^)(HOPStringAttributes *))attributesBlock {
++ (instancetype)attributerWithString:(NSString *)string defaultAttributesBlock:(void(^)(HOPStringAttributes *))attributesBlock {
     NSParameterAssert(string != nil);
     NSParameterAssert(attributesBlock != nil);
     HOPStringAttributes *attributes = [[HOPStringAttributes alloc] init];
     attributesBlock(attributes);
     NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:string attributes:[attributes attributedDictionary]];
-    HOPAttributer *attributer = [[self alloc] initWithAttributedString:attributedString cascadingAttributes:attributes];
+    HOPAttributer *attributer = [[self alloc] initWithAttributedString:attributedString defaultAttributes:attributes];
     return attributer;
 }
 
 # pragma mark - Appending
 
-- (instancetype)appendString:(NSString *)string withAttributesBlock:(void(^)(HOPStringAttributes *))attributesBlock {
+- (instancetype)appendString:(NSString *)string emptyAttributesBlock:(void(^)(HOPStringAttributes *))attributesBlock {
     NSParameterAssert(string != nil);
     NSParameterAssert(attributesBlock != nil);
     HOPStringAttributes *attributes = [[HOPStringAttributes alloc] init];
     attributesBlock(attributes);
     NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:string attributes:[attributes attributedDictionary]];
     NSAttributedString *combinedString = [self.attributedString hop_stringByAppendingAttributedString:attributedString];
-    return [[[self class] alloc] initWithAttributedString:combinedString cascadingAttributes:self.cascadingAttributes];
+    return [[[self class] alloc] initWithAttributedString:combinedString defaultAttributes:self.defaultAttributes];
 }
 
 # pragma mark - Cascading
 
-- (instancetype)cascadeAppendString:(NSString *)string {
+- (instancetype)appendString:(NSString *)string {
     NSParameterAssert(string != nil);
-    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:string attributes:[self.cascadingAttributes attributedDictionary]];
+    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:string attributes:[self.defaultAttributes attributedDictionary]];
     NSAttributedString *combinedString = [self.attributedString hop_stringByAppendingAttributedString:attributedString];
-    return [[[self class] alloc] initWithAttributedString:combinedString cascadingAttributes:self.cascadingAttributes];
+    return [[[self class] alloc] initWithAttributedString:combinedString defaultAttributes:self.defaultAttributes];
 }
 
-- (instancetype)cascadeAppendString:(NSString *)string attributesBlock:(void (^)(HOPStringAttributes *))attributesBlock {
+- (instancetype)appendString:(NSString *)string attributesBlock:(void (^)(HOPStringAttributes *))attributesBlock {
     NSParameterAssert(string != nil);
     NSParameterAssert(attributesBlock != nil);
-    HOPStringAttributes *modifiedAttributes = [self.cascadingAttributes copy];
+    HOPStringAttributes *modifiedAttributes = [self.defaultAttributes copy];
     attributesBlock(modifiedAttributes);
     NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:string attributes:[modifiedAttributes attributedDictionary]];
     NSAttributedString *combinedString = [self.attributedString hop_stringByAppendingAttributedString:attributedString];
-    return [[[self class] alloc] initWithAttributedString:combinedString cascadingAttributes:self.cascadingAttributes];
+    return [[[self class] alloc] initWithAttributedString:combinedString defaultAttributes:self.defaultAttributes];
 }
 
 @end
