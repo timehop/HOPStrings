@@ -8,6 +8,8 @@
 
 #import "HOPViewController.h"
 
+#import <HOPStrings/HOPStrings.h>
+
 @interface HOPViewController ()
 
 @property (nonatomic) UISegmentedControl *segmentedControl;
@@ -28,10 +30,11 @@
     [self.view addSubview:self.segmentedControl];
 
     self.label = [[UILabel alloc] init];
-    self.label.text = @"doc troll me";
+    self.label.numberOfLines = 0;
     [self.view addSubview:self.label];
 
     [self.segmentedControl setSelectedSegmentIndex:0];
+    [self segmentDidChange:self.segmentedControl];
 }
 
 - (void)viewWillLayoutSubviews {
@@ -45,8 +48,29 @@
 
 - (void)segmentDidChange:(UISegmentedControl *)control {
     NSInteger index = [control selectedSegmentIndex];
-    if (index == 0) {
 
+    HOPString *string;
+    if (index == 0) {
+        string =
+            [[[[[HOPString
+                string:@"Start with some base attributes\n"
+                withCascadingAttributesBlock:^(HOPStringAttributes *attr) {
+                    attr.font = [UIFont fontWithName:@"avenir" size:14];
+                    attr.foregroundColor = [UIColor colorWithWhite:0.2 alpha:1];
+                }]
+                cascadeAppendString:@"Add some more with the same attributes\n"]
+                cascadeAppendString:@"Same thing but this time add some flair\n"
+                    attributesBlock:^(HOPStringAttributes *attr) {
+                        attr.underlineStyle = @(NSUnderlineStyleThick|NSUnderlinePatternDashDot);
+                        attr.underlineColor = [UIColor blueColor];
+                        attr.strokeWidth = @3;
+                    }]
+                cascadeAppendString:@"Cascade only uses the initial attributes\n"]
+                cascadeAppendString:@"You can also override the cascade.\n"
+                    attributesBlock:^(HOPStringAttributes *attr) {
+                        attr.foregroundColor = [UIColor colorWithWhite:0.8 alpha:1];
+                        attr.backgroundColor = [UIColor colorWithWhite:0.2 alpha:1];
+                    }];
     } else if (index == 1) {
 
     } else if (index == 2) {
@@ -56,7 +80,7 @@
     } else if (index == 4) {
 
     }
-    NSLog(@"%@", @(index));
+    self.label.attributedText = [string attributedString];
 }
 
 @end
