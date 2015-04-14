@@ -54,10 +54,10 @@
         string =
             [[[[[HOPString
                 string:@"Start with some base attributes\n"
-                withCascadingAttributesBlock:^(HOPStringAttributes *attr) {
-                    attr.font = [UIFont fontWithName:@"avenir" size:14];
-                    attr.foregroundColor = [UIColor colorWithWhite:0.2 alpha:1];
-                }]
+                    withCascadingAttributesBlock:^(HOPStringAttributes *attr) {
+                        attr.font = [UIFont fontWithName:@"avenir" size:18];
+                        attr.foregroundColor = [UIColor colorWithWhite:0.2 alpha:1];
+                    }]
                 cascadeAppendString:@"Add some more with the same attributes\n"]
                 cascadeAppendString:@"Same thing but this time add some flair\n"
                     attributesBlock:^(HOPStringAttributes *attr) {
