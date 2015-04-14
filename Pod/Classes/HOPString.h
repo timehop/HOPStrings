@@ -6,7 +6,6 @@
 @import Foundation;
 
 @class HOPStringAttributes;
-@class HOPStringAttributes;
 
 #pragma mark -
 
@@ -15,7 +14,6 @@
 # pragma mark - Output
 
 @property (nonatomic, readonly) NSAttributedString *attributedString;
-@property (nonatomic, readonly) NSString *string;
 
 # pragma mark - Lifting
 
@@ -32,11 +30,5 @@
 
 - (instancetype)cascadeAppendString:(NSString *)string;
 - (instancetype)cascadeAppendString:(NSString *)string attributesBlock:(void (^)(HOPStringAttributes *attr))attributesBlock;
-
-# pragma mark - New Line
-
-- (instancetype)newlineAppendString:(NSString *)string withAttributesBlock:(void(^)(HOPStringAttributes *attr))attributesBlock;
-- (instancetype)newlineCascadeAppendString:(NSString *)string;
-- (instancetype)newlineCascadeAppendString:(NSString *)string attributesBlock:(void (^)(HOPStringAttributes *attr))attributesBlock;
 
 @end
