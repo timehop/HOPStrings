@@ -54,4 +54,10 @@
 /// Returns a new `HOPAttributer` with the same default attributes as the receiver.
 - (instancetype)appendString:(NSString *)string emptyAttributesBlock:(void(^)(HOPStringAttributes *attr))attributesBlock __attribute((nonnull));
 
+# pragma mark - Appending using special attribute rules
+
+/// Appends a newline character with the attributes of the last character in the receiver's attributedString.
+/// If the receiver's attributedString is empty, the receiver is returned.
+- (instancetype)appendNewline;
+
 @end

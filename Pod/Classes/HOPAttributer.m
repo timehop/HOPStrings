@@ -98,4 +98,15 @@
     return [[[self class] alloc] initWithAttributedString:combinedString defaultAttributes:self.defaultAttributes];
 }
 
+# pragma mark - Appending using special attribute rules
+
+- (instancetype)appendNewline {
+    if (self.attributedString.length == 0) return self;
+    NSUInteger index = self.attributedString.length - 1;
+    NSDictionary *attributesDictionary = [self.attributedString attributesAtIndex:index effectiveRange:nil];
+    NSAttributedString *newlineString = [[NSAttributedString alloc] initWithString:@"\n" attributes:attributesDictionary];
+    NSAttributedString *combinedString = [self.attributedString hop_stringByAppendingAttributedString:newlineString];
+    return [[[self class] alloc] initWithAttributedString:combinedString defaultAttributes:self.defaultAttributes];
+}
+
 @end
