@@ -7,7 +7,7 @@
 
 #pragma mark -
 
-@interface HOPStringAttributes : NSObject
+@interface HOPStringAttributes : NSObject <NSCopying>
 
 # pragma mark - NSAttributedString Attributes
 

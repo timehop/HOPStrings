@@ -86,4 +86,10 @@
     return [attributes copy];
 }
 
+#pragma mark NSCopying
+
+- (instancetype)copyWithZone:(NSZone *)zone {
+	return [[[self class] allocWithZone:zone] initWithDictionary:[self attributedDictionary]];
+}
+
 @end
