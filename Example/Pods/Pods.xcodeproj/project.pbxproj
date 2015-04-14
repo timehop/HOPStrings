@@ -65,6 +65,7 @@
 		7B554E7FA57C1F0CC4500DF3 /* ExpectaObject.h in Headers */ = {isa = PBXBuildFile; fileRef = F695667B4D0F65393EB2673A /* ExpectaObject.h */; };
 		7FE121DCF413DDDECF2E3E95 /* EXPMatchers+beLessThan.h in Headers */ = {isa = PBXBuildFile; fileRef = F226FB7FE36D369DCEDFCE36 /* EXPMatchers+beLessThan.h */; };
 		83942CD11ADC9BE300009CC0 /* HOPString.m in Sources */ = {isa = PBXBuildFile; fileRef = 83942CD01ADC9BE300009CC0 /* HOPString.m */; };
+		83942CD41ADCA1DD00009CC0 /* HOPStringAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 83942CD31ADCA1DD00009CC0 /* HOPStringAttributes.m */; };
 		83BA57024DAE82D510035430 /* EXPFloatTuple.h in Headers */ = {isa = PBXBuildFile; fileRef = 21613D25F37899E0147C8315 /* EXPFloatTuple.h */; };
 		85657E776866A9F079138804 /* EXPMatcherHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D67988687B5E20B002B4B8A /* EXPMatcherHelpers.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8939DAAF436AA8596901D59D /* ExpectaSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = B7DDD55D1CEF69957ACF3666 /* ExpectaSupport.h */; };
@@ -237,6 +238,8 @@
 		836B95C320FBBA645695DAA1 /* SPTSharedExampleGroups.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPTSharedExampleGroups.h; path = Specta/Specta/SPTSharedExampleGroups.h; sourceTree = "<group>"; };
 		83942CCF1ADC9BE300009CC0 /* HOPString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HOPString.h; path = Pod/Classes/HOPString.h; sourceTree = "<group>"; };
 		83942CD01ADC9BE300009CC0 /* HOPString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HOPString.m; path = Pod/Classes/HOPString.m; sourceTree = "<group>"; };
+		83942CD21ADCA1DD00009CC0 /* HOPStringAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HOPStringAttributes.h; path = Pod/Classes/HOPStringAttributes.h; sourceTree = "<group>"; };
+		83942CD31ADCA1DD00009CC0 /* HOPStringAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HOPStringAttributes.m; path = Pod/Classes/HOPStringAttributes.m; sourceTree = "<group>"; };
 		83E0B70534849ECCEE6BCD80 /* SPTTestSuite.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPTTestSuite.h; path = Specta/Specta/SPTTestSuite.h; sourceTree = "<group>"; };
 		856F94BB7381186BD15F9106 /* EXPMatchers+beNil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "EXPMatchers+beNil.m"; path = "Expecta/Matchers/EXPMatchers+beNil.m"; sourceTree = "<group>"; };
 		85FE16873EDA5C27C17A8662 /* NSValue+Expecta.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSValue+Expecta.m"; path = "Expecta/NSValue+Expecta.m"; sourceTree = "<group>"; };
@@ -501,6 +504,8 @@
 				2264B5D825CCFDDB8D19B43B /* Support Files */,
 				83942CCF1ADC9BE300009CC0 /* HOPString.h */,
 				83942CD01ADC9BE300009CC0 /* HOPString.m */,
+				83942CD21ADCA1DD00009CC0 /* HOPStringAttributes.h */,
+				83942CD31ADCA1DD00009CC0 /* HOPStringAttributes.m */,
 			);
 			name = HOPStrings;
 			path = ../..;
@@ -961,6 +966,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83942CD11ADC9BE300009CC0 /* HOPString.m in Sources */,
+				83942CD41ADCA1DD00009CC0 /* HOPStringAttributes.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
