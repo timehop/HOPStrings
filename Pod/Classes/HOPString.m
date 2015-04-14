@@ -75,7 +75,7 @@
     HOPStringAttributes *attributes = [[HOPStringAttributes alloc] init];
     attributesBlock(attributes);
     NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:string attributes:[attributes attributedDictionary]];
-    NSAttributedString *combinedString = [self.attributedString stringByAppendingAttributedString:attributedString];
+    NSAttributedString *combinedString = [self.attributedString hop_stringByAppendingAttributedString:attributedString];
     return [[[self class] alloc] initWithAttributedString:combinedString cascadingAttributes:self.cascadingAttributes];
 }
 
@@ -84,7 +84,7 @@
 - (instancetype)cascadeAppendString:(NSString *)string {
     NSParameterAssert(string != nil);
     NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:string attributes:[self.cascadingAttributes attributedDictionary]];
-    NSAttributedString *combinedString = [self.attributedString stringByAppendingAttributedString:attributedString];
+    NSAttributedString *combinedString = [self.attributedString hop_stringByAppendingAttributedString:attributedString];
     return [[[self class] alloc] initWithAttributedString:combinedString cascadingAttributes:self.cascadingAttributes];
 }
 
@@ -94,7 +94,7 @@
     HOPStringAttributes *modifiedAttributes = [self.cascadingAttributes copy];
     attributesBlock(modifiedAttributes);
     NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:string attributes:[modifiedAttributes attributedDictionary]];
-    NSAttributedString *combinedString = [self.attributedString stringByAppendingAttributedString:attributedString];
+    NSAttributedString *combinedString = [self.attributedString hop_stringByAppendingAttributedString:attributedString];
     return [[[self class] alloc] initWithAttributedString:combinedString cascadingAttributes:self.cascadingAttributes];
 }
 

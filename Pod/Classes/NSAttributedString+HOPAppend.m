@@ -10,7 +10,7 @@
 
 @implementation NSAttributedString (HOPAppend)
 
-- (instancetype)stringByAppendingAttributedString:(NSAttributedString *)string {
+- (instancetype)hop_stringByAppendingAttributedString:(NSAttributedString *)string {
     NSParameterAssert(string != nil);
     NSMutableAttributedString *combinedString = [self mutableCopy];
     [combinedString appendAttributedString:string];

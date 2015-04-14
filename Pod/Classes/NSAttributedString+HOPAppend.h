@@ -9,6 +9,6 @@
 
 @interface NSAttributedString (HOPAppend)
 
-- (instancetype)stringByAppendingAttributedString:(NSAttributedString *)string;
+- (instancetype)hop_stringByAppendingAttributedString:(NSAttributedString *)string;
 
 @end
