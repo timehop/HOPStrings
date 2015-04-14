@@ -1,0 +1,20 @@
+PODS:
+  - Expecta (0.4.0)
+  - HOPStrings (0.1.0)
+  - Specta (0.5.0)
+
+DEPENDENCIES:
+  - Expecta
+  - HOPStrings (from `../`)
+  - Specta
+
+EXTERNAL SOURCES:
+  HOPStrings:
+    :path: ../
+
+SPEC CHECKSUMS:
+  Expecta: 392a6b5bfb9f4097e47dd8064d9b732079490332
+  HOPStrings: 8a1ba6355409c137a3cebd69d9e31c63689da09b
+  Specta: eb90708ed77569bbda089f8ead10bb99b8e9489e
+
+COCOAPODS: 0.35.0
