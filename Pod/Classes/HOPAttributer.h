@@ -31,6 +31,9 @@
 /// Create an attributer with a configureable set of attributes that may be applied to most future transformations.
 + (instancetype)attributerWithDefaultAttributesBlock:(void(^)(HOPStringAttributes *attr))attributesBlock __attribute((nonnull));
 
+/// Create an empty attributer with no default attributes.
++ (instancetype)attributer;
+
 /// Create an attributer with a string and no default attributes.
 + (instancetype)attributerWithString:(NSString *)string __attribute((nonnull));
 

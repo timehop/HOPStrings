@@ -50,6 +50,10 @@
     return attributer;
 }
 
++ (instancetype)attributer {
+    return [[self alloc] init];
+}
+
 + (instancetype)attributerWithString:(NSString *)string {
     NSParameterAssert(string != nil);
     NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:string];
