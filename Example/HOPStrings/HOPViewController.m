@@ -12,6 +12,7 @@
 
 @interface HOPViewController ()
 
+@property (nonatomic) UILabel *titleLabel;
 @property (nonatomic) UISegmentedControl *segmentedControl;
 @property (nonatomic) UILabel *label;
 
@@ -24,7 +25,12 @@
 
     self.view.backgroundColor = [UIColor whiteColor];
 
-    NSArray *items = @[ @"1", @"2", @"3", @"4", @"5" ];
+    self.titleLabel = [[UILabel alloc] init];
+    self.titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.titleLabel.text = @"HOPStrings";
+    [self.view addSubview:self.titleLabel];
+
+    NSArray *items = @[ @"1", @"2" ];
     self.segmentedControl = [[UISegmentedControl alloc] initWithItems:items];
     [self.segmentedControl addTarget:self action:@selector(segmentDidChange:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:self.segmentedControl];
@@ -40,10 +46,14 @@
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
 
-    CGFloat const viewWidth = CGRectGetWidth(self.view.bounds);
-    self.segmentedControl.frame = CGRectMake(0, 40, viewWidth, 50);
+    CGFloat const margin = 20;
+    CGFloat const width = CGRectGetWidth(self.view.bounds) - margin * 2;
 
-    self.label.frame = CGRectMake(0, 140, viewWidth, 300);
+    self.titleLabel.frame = CGRectMake(margin, 20, width, 40);
+
+    self.segmentedControl.frame = CGRectMake(margin, 80, width, 50);
+
+    self.label.frame = CGRectMake(margin, 140, width, 300);
 }
 
 - (void)segmentDidChange:(UISegmentedControl *)control {
@@ -88,13 +98,9 @@
         [strings enumerateObjectsUsingBlock:^(NSString *str, NSUInteger idx, BOOL *stop) {
             attributer = [[attributer appendNewline] appendString:str];
         }];
-    } else if (index == 2) {
-
-    } else if (index == 3) {
-
-    } else if (index == 4) {
-
     }
+
+    // Unbox the NSAttributedString from HOPAttributer.
     self.label.attributedText = [attributer attributedString];
 }
 
