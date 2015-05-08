@@ -26,7 +26,7 @@ API ideas and pull requests are welcome.
 2. Chain `HOPAttributer` instance methods together to append strings. All instance methods return a new immutable `HOPAttributer` instance.
 3. Call `-attributedString` on any `HOPAttributer` instance to vend an `NSAttributedString`.
 
-### Create a `HOPAttributer`
+#### 1. Create a `HOPAttributer`
 
 ```objc
 /// You'll probably use these the most.
@@ -41,7 +41,7 @@ API ideas and pull requests are welcome.
 
 `HOPAttributer` has the concept of *default attributes*. Default attributes will be applied to all strings appended down the chain with the caveat they may be overridden (and also ignored: see `emptyAttributesBlock`).
 
-### Chain `HOPAttributer` instances
+#### 2. Chain `HOPAttributer` instances
 
 ```objc
 /// Appending starting with default attributes
@@ -68,7 +68,7 @@ Use the above methods append strings to the attributer.
 
 `appendString:attributesBlock:` will pass a `HOPStringAttributes` instance with the default attributes already set. If you want a pristine `HOPStringAttributes` instance, use use the `appendString:emptyAttributesBlock:` variant instead.
 
-### Get the output
+#### 3. Get the output
 
 When you're finished appending strings, just call `attributedString` on the `HOPAttributer` instance to vend an `NSAttributedString`. Perhaps you could set `attributedText` on a `UILabel`?
 
