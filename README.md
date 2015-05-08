@@ -36,7 +36,8 @@ API ideas and pull requests are welcome.
 /// You can use these too though.
 + (instancetype)attributerWithDefaultAttributes:(HOPStringAttributes *)attributes;
 + (instancetype)attributerWithString:(NSString *)string;
-+ (instancetype)attributerWithString:(NSString *)string defaultAttributesBlock:(void(^)(HOPStringAttributes *attr))attributesBlock;
++ (instancetype)attributerWithString:(NSString *)string 
+              defaultAttributesBlock:(void(^)(HOPStringAttributes *attr))attributesBlock;
 ```
 
 `HOPAttributer` has the concept of *default attributes*. Default attributes will be applied to all strings appended down the chain with the caveat they may be overridden (and also ignored: see `emptyAttributesBlock`).
@@ -46,10 +47,12 @@ API ideas and pull requests are welcome.
 ```objc
 /// Appending starting with default attributes
 - (instancetype)appendString:(NSString *)string;
-- (instancetype)appendString:(NSString *)string attributesBlock:(void (^)(HOPStringAttributes *attr))attributesBlock;
+- (instancetype)appendString:(NSString *)string 
+             attributesBlock:(void (^)(HOPStringAttributes *attr))attributesBlock;
 
 /// Appending without using default attributes
-- (instancetype)appendString:(NSString *)string emptyAttributesBlock:(void(^)(HOPStringAttributes *attr))attributesBlock;
+- (instancetype)appendString:(NSString *)string 
+        emptyAttributesBlock:(void(^)(HOPStringAttributes *attr))attributesBlock;
 ```
 
 Use the above methods append strings to the attributer.
