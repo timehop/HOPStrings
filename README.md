@@ -11,7 +11,7 @@ This library has not seen much production use yet. Therefore it is considered pr
 
 API ideas and pull requests are welcome.
 
-![Screenshot](/Marketing/screenshot-01.png)
+![Screenshot](/Marketing/example_01.png)
 
 ## Usage
 
