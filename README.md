@@ -11,7 +11,7 @@ This library has not seen much production use yet. Therefore it is considered pr
 
 API ideas and pull requests are welcome.
 
-![Screenshot](/screenshot-01.png)
+![Screenshot](/Marketing/screenshot-01.png)
 
 ## Usage
 
@@ -29,9 +29,12 @@ API ideas and pull requests are welcome.
 ### Create a `HOPAttributer`
 
 ```objc
-+ (instancetype)attributerWithDefaultAttributes:(HOPStringAttributes *)attributes;
+/// You'll probably use these the most.
 + (instancetype)attributerWithDefaultAttributesBlock:(void(^)(HOPStringAttributes *attr))attributesBlock;
 + (instancetype)attributer;
+
+/// You can use these too though.
++ (instancetype)attributerWithDefaultAttributes:(HOPStringAttributes *)attributes;
 + (instancetype)attributerWithString:(NSString *)string;
 + (instancetype)attributerWithString:(NSString *)string defaultAttributesBlock:(void(^)(HOPStringAttributes *attr))attributesBlock;
 ```
