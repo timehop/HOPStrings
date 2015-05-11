@@ -121,7 +121,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
-HOPStrings has no external dependencies outside of UIKit and Foundation. In theory it should work all the way back to iOS 3.2.
+HOPStrings has no external dependencies outside of UIKit and Foundation. It uses attributed string attributes introduced at iOS 7.
 
 ## Installation
 
