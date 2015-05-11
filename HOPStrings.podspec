@@ -10,21 +10,18 @@
 Pod::Spec.new do |s|
   s.name             = "HOPStrings"
   s.version          = "0.1.0"
-  s.summary          = "A short description of HOPStrings."
+  s.summary          = "A small library for making NSAttributedStrings."
   s.description      = <<-DESC
-                       An optional longer description of HOPStrings
-
-                       * Markdown format.
-                       * Don't worry about the indent, we strip it!
+                       Set some default attributes, then chain HOPAttribute instances together to create your attributed string.
                        DESC
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/HOPStrings"
-  # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
+  s.homepage         = "https://github.com/timehop/HOPStrings"
+  s.screenshots      = "https://github.com/timehop/HOPStrings/blob/master/Marketing/example_01.png"
   s.license          = 'MIT'
-  s.author           = { "Chris Trott" => "chris@twocentstudios.com" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/HOPStrings.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.author           = { "Chris Trott" => "chris@timehop.com" }
+  s.source           = { :git => "https://github.com/timehop/HOPStrings.git", :tag => s.version.to_s }
+  s.social_media_url = 'https://twitter.com/twocentstudios'
 
-  s.platform     = :ios, '7.0'
+  s.platform     = :ios, '3.2'
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'
@@ -32,7 +29,6 @@ Pod::Spec.new do |s|
     'HOPStrings' => ['Pod/Assets/*.png']
   }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.public_header_files = 'Pod/Classes/**/*.h'
+  s.frameworks = 'UIKit'
 end
