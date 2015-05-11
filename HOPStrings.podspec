@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "HOPStrings"
-  s.version          = "0.1.0"
+  s.version          = "0.1.1"
   s.summary          = "A small library for making NSAttributedStrings."
   s.description      = <<-DESC
                        Set some default attributes, then chain HOPAttribute instances together to create your attributed string.
