@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
                        Set some default attributes, then chain HOPAttribute instances together to create your attributed string.
                        DESC
   s.homepage         = "https://github.com/timehop/HOPStrings"
-  s.screenshots      = "https://github.com/timehop/HOPStrings/blob/master/Marketing/example_01.png"
+  # s.screenshots      = "https://github.com/timehop/HOPStrings/blob/master/Marketing/example_01.png"
   s.license          = 'MIT'
   s.author           = { "Chris Trott" => "chris@timehop.com" }
   s.source           = { :git => "https://github.com/timehop/HOPStrings.git", :tag => s.version.to_s }
